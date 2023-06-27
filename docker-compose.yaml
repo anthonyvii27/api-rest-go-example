@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: todos-api-postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "todos-user"
+      POSTGRES_PASSWORD: "todos-password"
+      POSTGRES_DB: "postgres"
+    volumes:
+      - "./.docker/database/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    restart: always
